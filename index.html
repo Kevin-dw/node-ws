@@ -1,722 +1,614 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Network - Protect Earth</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nintendo GameBoy Switch Concept</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #2e7d32;
-            --secondary: #4caf50;
-            --accent: #8bc34a;
-            --light: #e8f5e9;
-            --dark: #1b5e20;
-            --text: #333333;
-            --white: #ffffff;
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        
         body {
-            background-color: var(--light);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .logo i {
-            font-size: 2rem;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 2rem;
-        }
-
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            color: var(--text);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-img {
-            border-radius: 10px;
+            background-color: #1a1a1a;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            touch-action: none;
+            font-family: 'VT323', monospace;
         }
 
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
+        /* Pixel Perfect Canvas */
+        canvas {
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
         }
 
-        .about-img:hover img {
-            transform: scale(1.05);
+        /* LCD Grid Effect */
+        .lcd-grid {
+            background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
         }
 
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
+        /* Button Press Animation */
+        .btn-press:active, .btn-active {
+            transform: scale(0.95);
+            filter: brightness(0.8);
         }
 
-        .about-text p {
-            margin-bottom: 1.5rem;
+        /* Cartridge Slot Animation */
+        @keyframes insertCart {
+            0% { transform: translateY(-100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
         }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem 1rem;
-            background-color: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat-item i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-item p {
-            color: var(--text);
-        }
-
-        .initiatives {
-            background-color: var(--white);
-        }
-
-        .initiatives-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .initiative-card {
-            background-color: var(--light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .initiative-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .initiative-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .initiative-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .initiative-card:hover .initiative-img img {
-            transform: scale(1.1);
-        }
-
-        .initiative-content {
-            padding: 1.5rem;
-        }
-
-        .initiative-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .initiative-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .cta {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-            padding: 5rem 0;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta .btn {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        .cta .btn:hover {
-            background-color: var(--accent);
-            color: var(--white);
-        }
-
-        footer {
-            background-color: var(--dark);
-            color: var(--white);
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
-        }
-
-        .footer-column p {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links li a {
-            color: var(--light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links li a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 992px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary);
-                flex-direction: column;
-                padding: 1rem 0;
-                text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-            
-            nav ul.active {
-                display: flex;
-            }
-            
-            nav ul li {
-                margin: 0;
-                padding: 0.8rem 0;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animation for stats counter */
-        .counter {
-            transition: all 0.5s ease;
+        .cart-anim {
+            animation: insertCart 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-seedling"></i>
-                <span>Green Network</span>
-            </div>
-            <nav>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#get-involved">Get Involved</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div id="root"></div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Protect Our Planet, Preserve Our Future</h1>
-            <p>Join the global movement to create a sustainable world through conservation, education, and community action.</p>
-            <a href="#get-involved" class="btn">Join Our Network</a>
-        </div>
-    </section>
+    <script type="text/babel">
+        const { useState, useEffect, useRef, useCallback } = React;
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Green Network</h2>
-                <p>We are a global community dedicated to environmental protection and sustainable development.</p>
-            </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team planting trees">
-                </div>
-                <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>Green Network is committed to creating a sustainable future by protecting natural ecosystems, promoting renewable energy, and empowering communities to take environmental action.</p>
-                    <p>Founded in 2010, we've grown from a small grassroots organization to an international network with over 50,000 members across 120 countries.</p>
-                    <p>Our approach combines scientific research, community engagement, and policy advocacy to address the most pressing environmental challenges of our time.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-            </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <i class="fas fa-tree"></i>
-                    <h3 class="counter" data-target="2500000">0</h3>
-                    <p>Trees Planted</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <h3 class="counter" data-target="50000">0</h3>
-                    <p>Active Members</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3 class="counter" data-target="120">0</h3>
-                    <p>Countries Reached</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-recycle"></i>
-                    <h3 class="counter" data-target="1500">0</h3>
-                    <p>Cleanup Projects</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        // --- Game Assets & Sprites (Compressed format) ---
+        // 1 = Black, 0 = Transparent/White, 2 = Grey, 3 = Skin/Other
+        const SPRITES = {
+            link: [
+                "00111100",
+                "01111110",
+                "13333331",
+                "13333331",
+                "01111110",
+                "00111100",
+                "01011010",
+                "10011001"
+            ],
+            mario: [
+                "00011111000",
+                "00111111111",
+                "00222332300",
+                "02323332333",
+                "02322333233",
+                "00222233330",
+                "00011211100",
+                "00111111110",
+                "01112112111"
+            ],
+            ash: [
+                "000111000",
+                "001111100",
+                "011111110",
+                "111333111",
+                "133333331",
+                "011111110",
+                "001111100",
+                "001000100",
+                "011000110"
+            ]
+        };
 
-    <!-- Initiatives Section -->
-    <section class="initiatives" id="initiatives">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Initiatives</h2>
-                <p>Discover the key programs and projects we're implementing to protect our planet.</p>
-            </div>
-            <div class="initiatives-grid">
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://dialogue.earth/content/uploads/2021/04/lessons-from-the-rush-to-reforest-china-dialogue-2400x1599.jpg" alt="Reforestation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Global Reforestation</h3>
-                        <p>Planting millions of trees worldwide to restore ecosystems, combat climate change, and protect biodiversity.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Ocean Conservation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Ocean Conservation</h3>
-                        <p>Protecting marine ecosystems, reducing plastic pollution, and promoting sustainable fishing practices.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Renewable Energy">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Renewable Energy</h3>
-                        <p>Promoting solar, wind, and other clean energy sources to reduce dependence on fossil fuels.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta" id="get-involved">
-        <div class="container">
-            <h2>Join Our Global Movement</h2>
-            <p>Together, we can create a sustainable future for generations to come. Every action counts, no matter how small.</p>
-            <a href="#" class="btn">Become a Member</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Green Network</h3>
-                    <p>We are dedicated to protecting our planet through collaborative action, education, and sustainable solutions.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#initiatives">Initiatives</a></li>
-                        <li><a href="#get-involved">Get Involved</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Our Programs</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Reforestation</a></li>
-                        <li><a href="#">Ocean Cleanup</a></li>
-                        <li><a href="#">Wildlife Protection</a></li>
-                        <li><a href="#">Climate Education</a></li>
-                        <li><a href="#">Sustainable Agriculture</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Copper Creek Drive, New York</p>
-                    <p><i class="fas fa-phone"></i> +1 (312) 171-0771</p>
-                    <p><i class="fas fa-envelope"></i> support@greennetwork.org</p>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Green Network. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
-        });
-
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the slower
-            
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                
-                const inc = target / speed;
-                
-                if(count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
+        // --- Helper: Draw Pixel Art ---
+        const drawSprite = (ctx, sprite, x, y, colorMap, scale = 1) => {
+            sprite.forEach((row, dy) => {
+                for (let dx = 0; dx < row.length; dx++) {
+                    const char = row[dx];
+                    if (char !== '0') {
+                        ctx.fillStyle = colorMap[char] || '#000';
+                        ctx.fillRect(x + dx * scale, y + dy * scale, scale, scale);
+                    }
                 }
             });
-        }
+        };
 
-        // Initialize counters when page loads
-        window.addEventListener('load', animateCounters);
+        // --- Engine: Tetris ---
+        const useTetris = (isActive, controls) => {
+            const canvasRef = useRef(null);
+            const stateRef = useRef({
+                grid: Array(20).fill().map(() => Array(10).fill(0)),
+                active: null,
+                pos: {x:0, y:0},
+                score: 0,
+                gameOver: false,
+                tick: 0
+            });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
+            const SHAPES = [
+                [[1,1,1,1]], // I
+                [[1,1],[1,1]], // O
+                [[0,1,0],[1,1,1]], // T
+                [[1,0,0],[1,1,1]], // L
+                [[0,0,1],[1,1,1]], // J
+                [[0,1,1],[1,1,0]], // S
+                [[1,1,0],[0,1,1]]  // Z
+            ];
+
+            const spawn = () => {
+                const shape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
+                stateRef.current.active = shape;
+                stateRef.current.pos = { x: Math.floor(10/2) - Math.floor(shape[0].length/2), y: 0 };
+                if (collide(stateRef.current.grid, stateRef.current.active, stateRef.current.pos)) {
+                    stateRef.current.gameOver = true;
+                }
+            };
+
+            const collide = (grid, piece, pos) => {
+                for(let y=0; y<piece.length; y++) {
+                    for(let x=0; x<piece[y].length; x++) {
+                        if(piece[y][x] !== 0) {
+                            if(!grid[y + pos.y] || grid[y + pos.y][x + pos.x] !== 0) return true;
+                        }
+                    }
+                }
+                return false;
+            };
+
+            const merge = () => {
+                const { grid, active, pos } = stateRef.current;
+                active.forEach((row, y) => {
+                    row.forEach((val, x) => {
+                        if(val) grid[y + pos.y][x + pos.x] = val;
                     });
-                    
-                    document.querySelector('nav ul').classList.remove('active');
+                });
+                // Clear lines
+                for(let y = grid.length -1; y >= 0; y--) {
+                    if(grid[y].every(val => val !== 0)) {
+                        grid.splice(y, 1);
+                        grid.unshift(Array(10).fill(0));
+                        stateRef.current.score += 100;
+                        y++;
+                    }
                 }
+                spawn();
+            };
+
+            const rotate = () => {
+                const piece = stateRef.current.active;
+                const newPiece = piece[0].map((_, i) => piece.map(row => row[i]).reverse());
+                if(!collide(stateRef.current.grid, newPiece, stateRef.current.pos)) {
+                    stateRef.current.active = newPiece;
+                }
+            };
+
+            useEffect(() => {
+                if(!isActive) return;
+                stateRef.current = { grid: Array(20).fill().map(() => Array(10).fill(0)), active: null, pos:{x:0,y:0}, score:0, gameOver:false, tick:0 };
+                spawn();
+
+                const loop = setInterval(() => {
+                    if(stateRef.current.gameOver) return;
+                    const { grid, active, pos } = stateRef.current;
+                    
+                    // Controls handling inside loop for responsiveness
+                    if(controls.current.left) {
+                        if(!collide(grid, active, {x: pos.x-1, y: pos.y})) pos.x--;
+                        controls.current.left = false; // consume input
+                    }
+                    if(controls.current.right) {
+                        if(!collide(grid, active, {x: pos.x+1, y: pos.y})) pos.x++;
+                        controls.current.right = false;
+                    }
+                    if(controls.current.a) {
+                        rotate();
+                        controls.current.a = false;
+                    }
+                    if(controls.current.down) {
+                        if(!collide(grid, active, {x: pos.x, y: pos.y+1})) pos.y++;
+                    }
+
+                    // Gravity
+                    stateRef.current.tick++;
+                    if(stateRef.current.tick > 10) { // Speed
+                        if(!collide(grid, active, {x: pos.x, y: pos.y+1})) {
+                            pos.y++;
+                        } else {
+                            merge();
+                        }
+                        stateRef.current.tick = 0;
+                    }
+
+                    // Render
+                    const ctx = canvasRef.current.getContext('2d');
+                    ctx.fillStyle = '#8bac0f'; // GB Background
+                    ctx.fillRect(0, 0, 160, 144);
+                    
+                    // Draw Grid
+                    stateRef.current.grid.forEach((row, y) => {
+                        row.forEach((val, x) => {
+                            if(val) {
+                                ctx.fillStyle = '#0f380f';
+                                ctx.fillRect(x*8 + 40, y*8 + 4, 7, 7); // Center board
+                            }
+                        });
+                    });
+
+                    // Draw Active
+                    if(stateRef.current.active) {
+                        ctx.fillStyle = '#306230';
+                        stateRef.current.active.forEach((row, y) => {
+                            row.forEach((val, x) => {
+                                if(val) ctx.fillRect((x + stateRef.current.pos.x)*8 + 40, (y + stateRef.current.pos.y)*8 + 4, 7, 7);
+                            });
+                        });
+                    }
+
+                    // UI
+                    ctx.fillStyle = '#0f380f';
+                    ctx.font = '10px VT323';
+                    ctx.fillText(`SCORE`, 5, 20);
+                    ctx.fillText(`${stateRef.current.score}`, 5, 30);
+
+                }, 33); // 30 FPS
+                return () => clearInterval(loop);
+            }, [isActive]);
+
+            return canvasRef;
+        };
+
+        // --- Engine: Pokemon/RPG Walker ---
+        const useRPG = (isActive, controls, type = 'red') => {
+            const canvasRef = useRef(null);
+            const stateRef = useRef({ x: 80, y: 72, dir: 0, frame: 0 });
+            
+            // Simple map data (1=wall, 0=walk)
+            // Just a visual mockup of Pallet Town
+            
+            useEffect(() => {
+                if(!isActive) return;
+                const ctx = canvasRef.current.getContext('2d');
+                
+                const loop = setInterval(() => {
+                    // Update
+                    if(controls.current.left) stateRef.current.x -= 1;
+                    if(controls.current.right) stateRef.current.x += 1;
+                    if(controls.current.up) stateRef.current.y -= 1;
+                    if(controls.current.down) stateRef.current.y += 1;
+
+                    // Render
+                    // Background
+                    ctx.fillStyle = type === 'gold' ? '#c8d6e5' : '#9bbc0f';
+                    ctx.fillRect(0, 0, 160, 144);
+
+                    // Draw Houses (Mockup)
+                    ctx.fillStyle = type === 'gold' ? '#e74c3c' : '#306230';
+                    ctx.fillRect(20, 20, 40, 30); // House 1
+                    ctx.fillRect(100, 20, 40, 30); // House 2
+                    
+                    // Door
+                    ctx.fillStyle = '#0f380f';
+                    ctx.fillRect(35, 40, 10, 10);
+                    ctx.fillRect(115, 40, 10, 10);
+
+                    // Player
+                    const { x, y } = stateRef.current;
+                    const colors = type === 'gold' 
+                        ? { '1': '#e74c3c', '3': '#f1c40f' } // Color Ash
+                        : { '1': '#0f380f', '3': '#306230' }; // GB Ash
+                    
+                    drawSprite(ctx, SPRITES.ash, x, y, colors, 2);
+
+                    // Text Box
+                    ctx.fillStyle = '#fff';
+                    ctx.fillRect(0, 114, 160, 30);
+                    ctx.strokeStyle = '#000';
+                    ctx.strokeRect(0, 114, 160, 30);
+                    ctx.fillStyle = '#000';
+                    ctx.font = '10px monospace';
+                    ctx.fillText(type === 'gold' ? "城都地区 (GBC)" : "真新镇 (GB)", 5, 125);
+                    ctx.fillText("按 B 键奔跑", 5, 135);
+
+                }, 33);
+                return () => clearInterval(loop);
+            }, [isActive, type]);
+
+            return canvasRef;
+        };
+
+        // --- Engine: Mario Platformer ---
+        const useMario = (isActive, controls) => {
+            const canvasRef = useRef(null);
+            const physics = useRef({ x: 20, y: 100, vy: 0, grounded: true });
+
+            useEffect(() => {
+                if(!isActive) return;
+                
+                const loop = setInterval(() => {
+                    const p = physics.current;
+                    
+                    // Input
+                    if(controls.current.right) p.x += 1.5;
+                    if(controls.current.left) p.x -= 1.5;
+                    if(controls.current.a && p.grounded) {
+                        p.vy = -4;
+                        p.grounded = false;
+                    }
+
+                    // Physics
+                    p.vy += 0.25; // Gravity
+                    p.y += p.vy;
+
+                    // Ground collision
+                    if(p.y >= 100) {
+                        p.y = 100;
+                        p.vy = 0;
+                        p.grounded = true;
+                    }
+
+                    // Render
+                    const ctx = canvasRef.current.getContext('2d');
+                    ctx.fillStyle = '#9bbc0f';
+                    ctx.fillRect(0, 0, 160, 144);
+
+                    // Ground
+                    ctx.fillStyle = '#0f380f';
+                    ctx.fillRect(0, 116, 160, 28);
+
+                    // Blocks
+                    ctx.fillRect(60, 80, 16, 16); // ? Block
+                    ctx.fillStyle = '#306230';
+                    ctx.font = '16px monospace';
+                    ctx.fillText("?", 64, 92);
+
+                    // Mario
+                    drawSprite(ctx, SPRITES.mario, p.x, p.y, {'1': '#0f380f', '2': '#306230', '3': '#8bac0f'}, 1.5);
+
+                    // HUD
+                    ctx.fillStyle = '#0f380f';
+                    ctx.font = '10px monospace';
+                    ctx.fillText("MARIO  x00  TIME 300", 10, 10);
+
+                }, 33);
+                return () => clearInterval(loop);
+            }, [isActive]);
+            return canvasRef;
+        };
+
+        // --- Component: JoyCon ---
+        const JoyCon = ({ side, controls }) => {
+            const isLeft = side === 'left';
+            const colorClass = isLeft ? 'bg-stone-300' : 'bg-stone-300'; // Classic DMG Grey
+            
+            // Handlers for touch/mouse
+            const handlePress = (key, active) => {
+                if(controls.current) controls.current[key] = active;
+                // Vibration feedback
+                if(active && navigator.vibrate) navigator.vibrate(10);
+            };
+
+            return (
+                <div className={`w-24 h-full ${colorClass} flex flex-col items-center justify-center relative shadow-inner rounded-${isLeft?'l':'r'}-3xl border-y-4 border-${isLeft?'l':'r'}-4 border-stone-400`}>
+                    {/* Rail */}
+                    <div className={`absolute ${isLeft ? 'right-0' : 'left-0'} top-4 bottom-4 w-1 bg-black opacity-20`}></div>
+
+                    {isLeft ? (
+                        <div className="relative w-24 h-24">
+                            {/* D-Pad */}
+                            <div className="absolute top-4 left-4 w-16 h-16">
+                                <button className="absolute top-0 left-5 w-6 h-6 bg-neutral-900 rounded-t active:bg-neutral-700" 
+                                    onMouseDown={() => handlePress('up', true)} onMouseUp={() => handlePress('up', false)}
+                                    onTouchStart={() => handlePress('up', true)} onTouchEnd={() => handlePress('up', false)}></button>
+                                <button className="absolute bottom-0 left-5 w-6 h-6 bg-neutral-900 rounded-b active:bg-neutral-700"
+                                    onMouseDown={() => handlePress('down', true)} onMouseUp={() => handlePress('down', false)}
+                                    onTouchStart={() => handlePress('down', true)} onTouchEnd={() => handlePress('down', false)}></button>
+                                <button className="absolute left-0 top-5 w-6 h-6 bg-neutral-900 rounded-l active:bg-neutral-700"
+                                    onMouseDown={() => handlePress('left', true)} onMouseUp={() => handlePress('left', false)}
+                                    onTouchStart={() => handlePress('left', true)} onTouchEnd={() => handlePress('left', false)}></button>
+                                <button className="absolute right-0 top-5 w-6 h-6 bg-neutral-900 rounded-r active:bg-neutral-700"
+                                    onMouseDown={() => handlePress('right', true)} onMouseUp={() => handlePress('right', false)}
+                                    onTouchStart={() => handlePress('right', true)} onTouchEnd={() => handlePress('right', false)}></button>
+                                <div className="absolute top-5 left-5 w-6 h-6 bg-neutral-900"></div> {/* Center */}
+                            </div>
+                            
+                            {/* Select */}
+                            <div className="absolute bottom-[-40px] right-4 flex flex-col items-center">
+                                <button className="w-8 h-2 bg-neutral-800 transform rotate-[-25deg] rounded-full active:bg-black"
+                                    onMouseDown={() => handlePress('select', true)} onMouseUp={() => handlePress('select', false)}
+                                ></button>
+                                <span className="text-[8px] text-stone-500 font-bold mt-1">SELECT</span>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="relative w-24 h-24">
+                            {/* A/B Buttons */}
+                            <div className="absolute top-2 right-4 w-16 h-16">
+                                <button className="absolute right-0 top-4 w-8 h-8 bg-red-800 rounded-full shadow-sm border-b-4 border-red-900 active:border-b-0 active:translate-y-1 active:bg-red-700 btn-press text-red-200 font-bold"
+                                    onMouseDown={() => handlePress('a', true)} onMouseUp={() => handlePress('a', false)}
+                                    onTouchStart={() => handlePress('a', true)} onTouchEnd={() => handlePress('a', false)}>A</button>
+                                <button className="absolute left-0 top-8 w-8 h-8 bg-red-800 rounded-full shadow-sm border-b-4 border-red-900 active:border-b-0 active:translate-y-1 active:bg-red-700 btn-press text-red-200 font-bold"
+                                    onMouseDown={() => handlePress('b', true)} onMouseUp={() => handlePress('b', false)}
+                                    onTouchStart={() => handlePress('b', true)} onTouchEnd={() => handlePress('b', false)}>B</button>
+                            </div>
+
+                            {/* Start */}
+                            <div className="absolute bottom-[-40px] left-4 flex flex-col items-center">
+                                <button className="w-8 h-2 bg-neutral-800 transform rotate-[-25deg] rounded-full active:bg-black"
+                                    onMouseDown={() => handlePress('start', true)} onMouseUp={() => handlePress('start', false)}
+                                ></button>
+                                <span className="text-[8px] text-stone-500 font-bold mt-1">START</span>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        // --- Component: Cartridge Menu ---
+        const Menu = ({ onSelect }) => {
+            const games = [
+                { id: 'tetris', title: '俄罗斯方块', year: '1989', color: 'bg-gray-400' },
+                { id: 'pokemon_red', title: '宝可梦 红/蓝', year: '1996', color: 'bg-red-500' },
+                { id: 'zelda', title: '塞尔达传说:织梦岛', year: '1993', color: 'bg-green-600' },
+                { id: 'mario', title: '超级马里奥乐园2', year: '1992', color: 'bg-yellow-400' },
+                { id: 'pokemon_gold', title: '宝可梦 金/银', year: '1999', color: 'bg-yellow-600' }
+            ];
+            const [selected, setSelected] = useState(0);
+
+            useEffect(() => {
+                const handleKey = (e) => {
+                    if(e.key === 'ArrowRight') setSelected(p => (p + 1) % games.length);
+                    if(e.key === 'ArrowLeft') setSelected(p => (p - 1 + games.length) % games.length);
+                    if(e.key === 'Enter' || e.key === 'z') onSelect(games[selected].id);
+                };
+                window.addEventListener('keydown', handleKey);
+                return () => window.removeEventListener('keydown', handleKey);
+            }, [selected]);
+
+            return (
+                <div className="w-full h-full bg-neutral-800 text-white flex flex-col items-center justify-center p-4 relative">
+                    <div className="absolute top-2 left-4 text-xs text-gray-400">GBS OS v1.0</div>
+                    <div className="absolute top-2 right-4 text-xs text-gray-400">🔋 100%</div>
+                    
+                    <div className="flex gap-4 overflow-hidden w-full justify-center items-center h-48">
+                        {games.map((game, i) => (
+                            <div key={game.id} 
+                                className={`transition-all duration-300 transform ${i === selected ? 'scale-110 opacity-100' : 'scale-75 opacity-50'} 
+                                            w-32 h-40 ${game.color} rounded-lg shadow-lg flex flex-col items-center justify-start p-2 border-t-4 border-gray-300 cursor-pointer`}
+                                onClick={() => { setSelected(i); onSelect(game.id); }}
+                            >
+                                <div className="w-full h-24 bg-white rounded-sm mb-2 overflow-hidden relative">
+                                    {/* Mock Cartridge Label Art */}
+                                    <div className="absolute inset-0 flex items-center justify-center text-black font-bold text-center text-xs leading-tight p-1">
+                                        {game.title}
+                                    </div>
+                                </div>
+                                <span className="text-[10px] text-black font-bold tracking-widest">GAME BOY</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="mt-4 text-center">
+                        <h2 className="text-xl font-bold text-white">{games[selected].title}</h2>
+                        <p className="text-xs text-gray-400">{games[selected].year} • Nintendo</p>
+                        <div className="mt-2 text-xs animate-pulse">PRESS A TO START</div>
+                    </div>
+                </div>
+            );
+        };
+
+        // --- Main App ---
+        const App = () => {
+            const [gameId, setGameId] = useState(null); // null = menu
+            const controlsRef = useRef({
+                up: false, down: false, left: false, right: false,
+                a: false, b: false, start: false, select: false
             });
-        });
+
+            // Keyboard mapping
+            useEffect(() => {
+                const map = {
+                    'ArrowUp': 'up', 'ArrowDown': 'down', 'ArrowLeft': 'left', 'ArrowRight': 'right',
+                    'z': 'a', 'x': 'b', 'Enter': 'start', 'Shift': 'select'
+                };
+                const handleDown = (e) => { if(map[e.key]) controlsRef.current[map[e.key]] = true; };
+                const handleUp = (e) => { if(map[e.key]) controlsRef.current[map[e.key]] = false; };
+                window.addEventListener('keydown', handleDown);
+                window.addEventListener('keyup', handleUp);
+                return () => {
+                    window.removeEventListener('keydown', handleDown);
+                    window.removeEventListener('keyup', handleUp);
+                };
+            }, []);
+
+            // Game Renderer
+            const GameScreen = () => {
+                let canvasRef;
+                
+                // Logic Hook Selection
+                if (gameId === 'tetris') canvasRef = useTetris(true, controlsRef);
+                else if (gameId === 'pokemon_red') canvasRef = useRPG(true, controlsRef, 'red');
+                else if (gameId === 'mario') canvasRef = useMario(true, controlsRef);
+                else if (gameId === 'pokemon_gold') canvasRef = useRPG(true, controlsRef, 'gold');
+                else if (gameId === 'zelda') {
+                    // Simple Zelda mockup using RPG engine but different sprite/map logic would be ideal
+                    // Reusing RPG engine for brevity but with Zelda flavor could be simulated here or separate hook
+                    // For this single-file constraint, we'll use the RPG engine visual for Zelda but imagine Link
+                    canvasRef = useRPG(true, controlsRef, 'red'); 
+                } else {
+                    return <div className="w-full h-full bg-black"></div>;
+                }
+
+                // Add Zelda specific overlay if needed, or just let it be
+                return (
+                    <canvas 
+                        ref={canvasRef} 
+                        width={160} 
+                        height={144} 
+                        className="w-full h-full object-contain bg-[#8bac0f]"
+                    />
+                );
+            };
+
+            return (
+                <div className="flex items-center justify-center min-h-screen bg-zinc-900 p-4">
+                    {/* Switch Console Body */}
+                    <div className="flex items-stretch h-[350px] select-none drop-shadow-2xl scale-75 sm:scale-100 md:scale-110 transition-transform">
+                        
+                        {/* Left JoyCon */}
+                        <JoyCon side="left" controls={controlsRef} />
+
+                        {/* Main Unit */}
+                        <div className="w-[450px] bg-neutral-800 border-y-8 border-neutral-900 flex flex-col items-center justify-center p-6 relative z-10 shadow-2xl rounded-sm">
+                            
+                            {/* Screen Bezel */}
+                            <div className="w-full h-full bg-black rounded-md p-4 flex flex-col relative shadow-inner border border-gray-700">
+                                {/* Brand */}
+                                <div className="absolute top-1 left-4 text-xs text-gray-600 font-bold italic font-sans tracking-wider">NINTENDO GAME BOY SWITCH</div>
+                                <div className="absolute top-1 right-4 flex gap-1">
+                                    <div className="w-1 h-1 bg-red-500 rounded-full animate-pulse"></div>
+                                </div>
+
+                                {/* LCD Screen Area */}
+                                <div className="relative flex-1 bg-[#8bac0f] overflow-hidden rounded-sm shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]">
+                                    
+                                    {/* Game Content */}
+                                    {gameId ? (
+                                        <div className="w-full h-full relative animate-fade-in">
+                                            <GameScreen />
+                                            {/* Pixel Grid Overlay */}
+                                            <div className="absolute inset-0 lcd-grid mix-blend-multiply opacity-50"></div>
+                                            {/* Shadow/Vignette */}
+                                            <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(0,0,0,0.4)] pointer-events-none"></div>
+                                        </div>
+                                    ) : (
+                                        <Menu onSelect={setGameId} />
+                                    )}
+
+                                    {/* Home Button Overlay (Simulated OS) */}
+                                    {gameId && (
+                                        <button 
+                                            onClick={() => setGameId(null)}
+                                            className="absolute top-2 left-2 bg-black/50 text-white text-[8px] px-2 py-1 rounded hover:bg-black/80 transition-colors z-50"
+                                        >
+                                            MENU
+                                        </button>
+                                    )}
+                                </div>
+                                
+                                {/* Bottom branding text */}
+                                <div className="mt-1 text-center">
+                                    <span className="text-[10px] text-gray-700 font-sans font-bold">STEREO SOUND</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Right JoyCon */}
+                        <JoyCon side="right" controls={controlsRef} />
+
+                    </div>
+                    
+                    {/* Instructions */}
+                    <div className="absolute bottom-4 text-gray-500 text-xs font-sans text-center">
+                        <p>键盘操作: 方向键移动 | Z=A | X=B | Enter=Start | Shift=Select</p>
+                        <p>触屏操作: 点击屏幕两侧手柄按钮</p>
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
     </script>
 </body>
-
 </html>
